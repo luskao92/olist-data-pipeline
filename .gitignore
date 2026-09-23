@@ -216,3 +216,14 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# --- Projeto MVP: adições específicas ---
+.env
+*.token
+venv/
+.databricks/
+
+# Dados (não é obrigatório subir - item 4 do enunciado)
+data/raw/
+data/*.csv
+data/*.parquet
