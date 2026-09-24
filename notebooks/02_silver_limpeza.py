@@ -34,7 +34,7 @@ customers_silver = (
 n_nulos = customers_silver.filter(F.col("customer_unique_id").isNull()).count()
 print(f"customers: {n_nulos} linhas com customer_unique_id nulo (esperado: 0)")
 
-customers_silver.write.format("delta").mode("overwrite").saveAsTable(f"{CATALOGO}.{SCHEMA_SILVER}.customers")
+customers_silver.write.format("delta").mode("overwrite").option("overwriteSchema", "true").saveAsTable(f"{CATALOGO}.{SCHEMA_SILVER}.customers")
 
 # COMMAND ----------
 
@@ -63,7 +63,7 @@ status_validos = ["delivered", "shipped", "canceled", "unavailable", "invoiced",
 status_invalidos = orders_silver.filter(~F.col("order_status").isin(status_validos)).count()
 print(f"orders: {status_invalidos} linhas com order_status fora do domínio esperado")
 
-orders_silver.write.format("delta").mode("overwrite").saveAsTable(f"{CATALOGO}.{SCHEMA_SILVER}.orders")
+orders_silver.write.format("delta").mode("overwrite").option("overwriteSchema", "true").saveAsTable(f"{CATALOGO}.{SCHEMA_SILVER}.orders")
 
 # COMMAND ----------
 
@@ -96,7 +96,7 @@ pct_sem_categoria = (
 )
 print(f"products: {pct_sem_categoria:.2f}% dos produtos sem categoria original")
 
-products_silver.write.format("delta").mode("overwrite").saveAsTable(f"{CATALOGO}.{SCHEMA_SILVER}.products")
+products_silver.write.format("delta").mode("overwrite").option("overwriteSchema", "true").saveAsTable(f"{CATALOGO}.{SCHEMA_SILVER}.products")
 
 # COMMAND ----------
 
@@ -113,7 +113,7 @@ sellers_silver = (
     .dropDuplicates(["seller_id"])
 )
 
-sellers_silver.write.format("delta").mode("overwrite").saveAsTable(f"{CATALOGO}.{SCHEMA_SILVER}.sellers")
+sellers_silver.write.format("delta").mode("overwrite").option("overwriteSchema", "true").saveAsTable(f"{CATALOGO}.{SCHEMA_SILVER}.sellers")
 
 # COMMAND ----------
 
@@ -132,11 +132,11 @@ order_items_silver = (
 
 # checagem de outliers simples (preço muito acima da média)
 stats = order_items_silver.select(F.mean("price").alias("media"), F.stddev("price").alias("dp")).first()
-limite_outlier = float(stats["media"]) + 3 * float(stats["dp"])
+limite_outlier = stats["media"] + 3 * stats["dp"]
 n_outliers = order_items_silver.filter(F.col("price") > limite_outlier).count()
 print(f"order_items: {n_outliers} itens com price acima de média+3dp (limite={limite_outlier:.2f})")
 
-order_items_silver.write.format("delta").mode("overwrite").saveAsTable(f"{CATALOGO}.{SCHEMA_SILVER}.order_items")
+order_items_silver.write.format("delta").mode("overwrite").option("overwriteSchema", "true").saveAsTable(f"{CATALOGO}.{SCHEMA_SILVER}.order_items")
 
 # COMMAND ----------
 
@@ -152,7 +152,7 @@ order_payments_silver = (
     .filter(F.col("payment_installments") >= 0)
 )
 
-order_payments_silver.write.format("delta").mode("overwrite").saveAsTable(f"{CATALOGO}.{SCHEMA_SILVER}.order_payments")
+order_payments_silver.write.format("delta").mode("overwrite").option("overwriteSchema", "true").saveAsTable(f"{CATALOGO}.{SCHEMA_SILVER}.order_payments")
 
 # COMMAND ----------
 
@@ -171,7 +171,7 @@ order_reviews_silver = (
     .filter(F.col("review_score").between(1, 5))
 )
 
-order_reviews_silver.write.format("delta").mode("overwrite").saveAsTable(f"{CATALOGO}.{SCHEMA_SILVER}.order_reviews")
+order_reviews_silver.write.format("delta").mode("overwrite").option("overwriteSchema", "true").saveAsTable(f"{CATALOGO}.{SCHEMA_SILVER}.order_reviews")
 
 # COMMAND ----------
 

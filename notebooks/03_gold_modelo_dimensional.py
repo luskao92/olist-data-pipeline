@@ -35,7 +35,7 @@ dim_cliente = (
     .select("sk_cliente", "customer_unique_id", "customer_city", "customer_state", "customer_zip_code_prefix")
 )
 
-dim_cliente.write.format("delta").mode("overwrite").saveAsTable(f"{CATALOGO}.{SCHEMA_GOLD}.dim_cliente")
+dim_cliente.write.format("delta").mode("overwrite").option("overwriteSchema", "true").saveAsTable(f"{CATALOGO}.{SCHEMA_GOLD}.dim_cliente")
 print(f"dim_cliente: {dim_cliente.count()} clientes únicos")
 
 # COMMAND ----------
@@ -60,7 +60,7 @@ dim_produto = (
     )
 )
 
-dim_produto.write.format("delta").mode("overwrite").saveAsTable(f"{CATALOGO}.{SCHEMA_GOLD}.dim_produto")
+dim_produto.write.format("delta").mode("overwrite").option("overwriteSchema", "true").saveAsTable(f"{CATALOGO}.{SCHEMA_GOLD}.dim_produto")
 print(f"dim_produto: {dim_produto.count()} produtos")
 
 # COMMAND ----------
@@ -77,7 +77,7 @@ dim_vendedor = (
     .select("sk_vendedor", "seller_id", "seller_city", "seller_state")
 )
 
-dim_vendedor.write.format("delta").mode("overwrite").saveAsTable(f"{CATALOGO}.{SCHEMA_GOLD}.dim_vendedor")
+dim_vendedor.write.format("delta").mode("overwrite").option("overwriteSchema", "true").saveAsTable(f"{CATALOGO}.{SCHEMA_GOLD}.dim_vendedor")
 print(f"dim_vendedor: {dim_vendedor.count()} vendedores")
 
 # COMMAND ----------
@@ -115,7 +115,7 @@ dim_data = (
     .withColumn("fim_de_semana", F.dayofweek("data").isin([1, 7]))
 )
 
-dim_data.write.format("delta").mode("overwrite").saveAsTable(f"{CATALOGO}.{SCHEMA_GOLD}.dim_data")
+dim_data.write.format("delta").mode("overwrite").option("overwriteSchema", "true").saveAsTable(f"{CATALOGO}.{SCHEMA_GOLD}.dim_data")
 print(f"dim_data: {dim_data.count()} dias ({data_min} a {data_max})")
 
 # COMMAND ----------
@@ -133,7 +133,7 @@ dim_pedido = (
     .select("sk_pedido", "order_id", "sk_cliente", "order_status", "data_compra", "dias_atraso")
 )
 
-dim_pedido.write.format("delta").mode("overwrite").saveAsTable(f"{CATALOGO}.{SCHEMA_GOLD}.dim_pedido")
+dim_pedido.write.format("delta").mode("overwrite").option("overwriteSchema", "true").saveAsTable(f"{CATALOGO}.{SCHEMA_GOLD}.dim_pedido")
 print(f"dim_pedido: {dim_pedido.count()} pedidos")
 
 # COMMAND ----------
@@ -152,7 +152,7 @@ fato_pedido_itens = (
     .select("sk_pedido", "sk_produto", "sk_vendedor", "order_item_id", "price", "freight_value")
 )
 
-fato_pedido_itens.write.format("delta").mode("overwrite").saveAsTable(f"{CATALOGO}.{SCHEMA_GOLD}.fato_pedido_itens")
+fato_pedido_itens.write.format("delta").mode("overwrite").option("overwriteSchema", "true").saveAsTable(f"{CATALOGO}.{SCHEMA_GOLD}.fato_pedido_itens")
 print(f"fato_pedido_itens: {fato_pedido_itens.count()} itens")
 
 # COMMAND ----------
@@ -169,7 +169,7 @@ fato_pagamentos = (
     .select("sk_pedido", "payment_sequential", "payment_type", "payment_installments", "payment_value")
 )
 
-fato_pagamentos.write.format("delta").mode("overwrite").saveAsTable(f"{CATALOGO}.{SCHEMA_GOLD}.fato_pagamentos")
+fato_pagamentos.write.format("delta").mode("overwrite").option("overwriteSchema", "true").saveAsTable(f"{CATALOGO}.{SCHEMA_GOLD}.fato_pagamentos")
 print(f"fato_pagamentos: {fato_pagamentos.count()} pagamentos")
 
 # COMMAND ----------
@@ -186,7 +186,7 @@ fato_avaliacoes = (
     .select("sk_pedido", "review_score", "dias_resposta")
 )
 
-fato_avaliacoes.write.format("delta").mode("overwrite").saveAsTable(f"{CATALOGO}.{SCHEMA_GOLD}.fato_avaliacoes")
+fato_avaliacoes.write.format("delta").mode("overwrite").option("overwriteSchema", "true").saveAsTable(f"{CATALOGO}.{SCHEMA_GOLD}.fato_avaliacoes")
 print(f"fato_avaliacoes: {fato_avaliacoes.count()} avaliações")
 
 # COMMAND ----------

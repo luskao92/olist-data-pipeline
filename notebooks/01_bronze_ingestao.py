@@ -46,7 +46,7 @@ for nome_tabela, nome_arquivo in ARQUIVOS.items():
         .load(caminho)
     )
     tabela_destino = f"{CATALOGO}.{SCHEMA_BRONZE}.{nome_tabela}"
-    df.write.format("delta").mode("overwrite").saveAsTable(tabela_destino)
+    df.write.format("delta").mode("overwrite").option("overwriteSchema", "true").saveAsTable(tabela_destino)
     print(f"OK: {tabela_destino} ({df.count()} linhas, {len(df.columns)} colunas)")
 
 # COMMAND ----------
