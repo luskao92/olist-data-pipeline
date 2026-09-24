@@ -132,7 +132,7 @@ order_items_silver = (
 
 # checagem de outliers simples (preço muito acima da média)
 stats = order_items_silver.select(F.mean("price").alias("media"), F.stddev("price").alias("dp")).first()
-limite_outlier = stats["media"] + 3 * stats["dp"]
+limite_outlier = float(stats["media"]) + 3 * float(stats["dp"])
 n_outliers = order_items_silver.filter(F.col("price") > limite_outlier).count()
 print(f"order_items: {n_outliers} itens com price acima de média+3dp (limite={limite_outlier:.2f})")
 
