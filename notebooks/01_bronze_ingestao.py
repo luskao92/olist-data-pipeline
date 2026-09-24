@@ -40,6 +40,9 @@ for nome_tabela, nome_arquivo in ARQUIVOS.items():
         .option("header", "true")
         .option("inferSchema", "true")
         .option("encoding", "UTF-8")
+        .option("multiLine", "true")   # review_comment_message tem quebras de linha dentro de campos
+        .option("quote", '"')
+        .option("escape", '"')
         .load(caminho)
     )
     tabela_destino = f"{CATALOGO}.{SCHEMA_BRONZE}.{nome_tabela}"
