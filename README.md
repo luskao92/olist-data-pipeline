@@ -4,6 +4,7 @@
 > Pipeline de dados ponta a ponta na nuvem (Databricks/Lakehouse), arquitetura medalhão (Bronze → Silver → Gold), sobre o dataset público **Olist Brazilian E-commerce**.
 
 **Autor:** Lucas Alves
+**Matrícula: 4052025002019
 **Plataforma:** Databricks Free Edition (Unity Catalog, Delta Lake, PySpark/Spark SQL)
 **Repositório:** todo o código deste projeto (notebooks e documentação) está neste repositório GitHub, sincronizado com o workspace do Databricks via Databricks Repos.
 
