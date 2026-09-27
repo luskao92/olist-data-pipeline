@@ -45,7 +45,7 @@ Quero entender quais fatores impactam a satisfação do cliente e a performance 
 ### Fonte de dados e licença
 
 **Dataset**: [Olist Brazilian E-commerce Public Dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) (Kaggle)
-**Licença**: CC BY-NC-SA 4.0 (uso não comercial, com atribuição, compartilhamento pela mesma licença) — compatível com o uso acadêmico deste MVP.
+**Licença**: CC BY-NC-SA 4.0 (uso não comercial, com atribuição, compartilhamento pela mesma licença).
 
 ### Contexto e estrutura dos dados brutos
 
