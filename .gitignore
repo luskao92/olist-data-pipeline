@@ -227,3 +227,4 @@ venv/
 data/raw/
 data/*.csv
 data/*.parquet
+rascunho-respostas.md

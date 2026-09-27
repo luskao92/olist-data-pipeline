@@ -106,7 +106,7 @@ display(pergunta3a)
 
 # COMMAND ----------
 
-ESTADO_ALVO = "SP"  # AJUSTAR conforme resultado da pergunta 3a
+ESTADO_ALVO = "MG"  # Definido a partir do resultado da pergunta 3a (ver docs/04-analise-resultados.md)
 
 pergunta3b = spark.sql(f"""
 SELECT
@@ -233,15 +233,17 @@ display(pergunta7_tempo_medio)
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## Resumo executivo (preencher após analisar os resultados acima)
+# MAGIC ## Resumo executivo
+# MAGIC
+# MAGIC A interpretação completa de cada achado, com discussão e recomendações de negócio, está em `docs/04-analise-resultados.md`. Resumo:
 # MAGIC
 # MAGIC | # | Pergunta | Resposta / achado principal |
 # MAGIC |---|---|---|
-# MAGIC | 1 | Atraso x satisfação | _preencher_ |
-# MAGIC | 2 | Receita por categoria | _preencher_ |
-# MAGIC | 3a | Estado para novo CD | _preencher_ |
-# MAGIC | 3b | Categorias no estado escolhido | _preencher_ |
-# MAGIC | 4 | Pagamento x parcelas | _preencher_ |
-# MAGIC | 5 | Sazonalidade mensal | _preencher_ |
-# MAGIC | 6 | Vendedor x avaliação | _preencher_ |
-# MAGIC | 7 | Recência/recompra | _preencher_ |
+# MAGIC | 1 | Atraso x satisfação | Atraso na entrega derruba fortemente a nota média (4.29 no prazo -> 1.85 com atraso grande) |
+# MAGIC | 2 | Receita por categoria | `health_beauty`, `watches_gifts` e `bed_bath_table` lideram a receita total |
+# MAGIC | 3a | Estado para novo CD | Minas Gerais (MG): 3º em volume de pedidos, entre os piores em atraso médio, posição geográfica central |
+# MAGIC | 3b | Categorias no estado escolhido | Perfil de demanda em MG reproduz o ranking nacional da pergunta 2 |
+# MAGIC | 4 | Pagamento x parcelas | Cartão de crédito domina (73,3%), é a única forma parcelada e tem o maior ticket médio |
+# MAGIC | 5 | Sazonalidade mensal | Crescimento ao longo de 2017-2018, com pico em novembro/2017 (Black Friday) |
+# MAGIC | 6 | Vendedor x avaliação | Entrega adiantada favorece nota alta nos melhores vendedores, mas a relação é mais fraca entre os piores |
+# MAGIC | 7 | Recência/recompra | Apenas 3,12% dos clientes recompram; intervalo médio de 80,3 dias entre 1ª e 2ª compra |
