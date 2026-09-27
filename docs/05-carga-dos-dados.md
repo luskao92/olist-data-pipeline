@@ -12,4 +12,4 @@ A leitura dos CSVs para dentro do Databricks (camada Bronze) é feita via script
 
 - **Script**: [`notebooks/01_bronze_ingestao.py`](../notebooks/01_bronze_ingestao.py)
 - O notebook lê cada um dos 9 CSVs do Volume, com tratamento de encoding UTF-8 e de campos multilinha entre aspas (necessário porque a coluna `review_comment_message` contém quebras de linha dentro do texto, o que inicialmente quebrava o parsing — ver `docs/03-qualidade-de-dados.md`), e grava cada um como uma tabela Delta no schema `bronze` do Unity Catalog.
-- Evidência de execução: ver `evidencias/bronze-execucao.png`.
+- Evidência de execução: ver [`Evidencia_01_Notebook_Bronze.jpg`](../evidencias/Evidencia_01_Notebook_Bronze.jpg)
