@@ -1,4 +1,4 @@
-# Qualidade de Dados (Etapa 4.4)
+# Qualidade de Dados (Etapa 4.5)
 
 Este documento registra as verificações de qualidade aplicadas na camada Silver (`notebooks/02_silver_limpeza.py`), organizadas pelas cinco dimensões de qualidade de dados trabalhadas na disciplina: **Completude, Consistência, Unicidade, Acurácia e Outliers**.
 

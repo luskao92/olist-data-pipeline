@@ -1,4 +1,4 @@
-# Análise: Respostas às Perguntas de Negócio (Etapa 5)
+# Análise de Dados: Respostas às Perguntas de Negócio (Etapa 4.5)
 
 > Resultados obtidos a partir das tabelas Gold (`notebooks/04_analise_perguntas_negocio.py`), executado no Databricks sobre o dataset Olist.
 
