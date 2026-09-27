@@ -1,11 +1,14 @@
-# MVP — Pipeline de Dados Olist E-commerce (Sprint 4: Engenharia de Dados)
+# MVP — Pipeline de Dados Olist E-commerce
 
 > MVP de conclusão da Sprint 4 da Pós-graduação em Ciência de Dados e Analytics — PUC-Rio.
 > Pipeline de dados ponta a ponta na nuvem (Databricks/Lakehouse), arquitetura medalhão (Bronze → Silver → Gold), sobre o dataset público **Olist Brazilian E-commerce**.
 
 **Autor:** Lucas Alves
+
 **Matrícula: 4052025002019
+
 **Plataforma:** Databricks Free Edition (Unity Catalog, Delta Lake, PySpark/Spark SQL)
+
 **Repositório:** todo o código deste projeto (notebooks e documentação) está neste repositório GitHub, sincronizado com o workspace do Databricks via Databricks Repos.
 
 ## Sumário
